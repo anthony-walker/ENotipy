@@ -2,13 +2,13 @@
 # @Date:   2020-02-28T08:20:49-08:00
 # @Email:  dev.sokato@gmail.com
 # @Last modified by:   walkanth
-# @Last modified time: 2020-02-28T08:36:04-08:00
+# @Last modified time: 2020-02-28T10:36:43-08:00
 
 
 
 import setuptools
 
-with open("README.md", "r") as fh:
+with open("README.md", encoding='utf-8') as fh:
     long_description = fh.read()
 
 setuptools.setup(
