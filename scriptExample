@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+#Brings up help menu
+#notipy -h
+
+#Generates SAMPLE_INFO
+#notipy -g
+
+#Execute with env setup request
+notipy "python scriptCodeExample.py" -r=True
+
+#Execute with env setup info file
+#notipy "python scriptCodeExample.py" -i=SAMPLE_INFO
+
+#Environment can be manually set as well
+#notipy "python scriptCodeExample.py" -t=60 #timeout after 60 minutes

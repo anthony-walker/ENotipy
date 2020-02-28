@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+export NOTIPY_EMAIL="dev.notipy@gmail.com"
+export NOTIPY_KEY="SuperSecretPassword"
+export NOTIPY_SMTP="smtp.gmail.com"
+export NOTIPY_PORT="587"
