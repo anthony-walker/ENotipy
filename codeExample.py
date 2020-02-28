@@ -1,4 +1,4 @@
-import notipy.notipy as notipy
+import enotipy.notipy as notipy
 
 if __name__ == "__main__":
     #The function to be executed
