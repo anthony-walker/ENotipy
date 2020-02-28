@@ -1,3 +1,11 @@
+# @Author: Anthony Walker <walkanth>
+# @Date:   2020-02-28T08:20:49-08:00
+# @Email:  dev.sokato@gmail.com
+# @Last modified by:   walkanth
+# @Last modified time: 2020-02-28T08:36:04-08:00
+
+
+
 import setuptools
 
 with open("README.md", "r") as fh:
@@ -5,7 +13,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="enotipy", # Replace with your own username
-    version="0.0.1",
+    version="1.0.0",
     author="Anthony Walker",
     author_email="dev.notipy@gmail.com",
     license='BSD 3-clause "New" or "Revised License"',
