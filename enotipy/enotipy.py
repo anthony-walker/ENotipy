@@ -1,3 +1,11 @@
+# @Author: Anthony Walker <walkanth>
+# @Date:   2020-02-28T10:34:13-08:00
+# @Email:  dev.sokato@gmail.com
+# @Last modified by:   walkanth
+# @Last modified time: 2020-02-28T11:20:23-08:00
+
+
+
 #Programmer: Anthony Walker
 
 from collections.abc import Iterable
@@ -26,7 +34,7 @@ class ENotiPy(object):
     """Use this class to execute a function and notify via email when it has completed."""
     def __init__(self,rank=0,timeout=None):
         """Initializer."""
-        self.timeout = timeout
+        self.timeout = timeout*60 if isinstance(timeout,type(1.0)) or isinstance(timeout,type(1)) else None
         try:
             self.smtp =os.environ['ENOTIPY_SMTP']
             self.port = int(os.environ['ENOTIPY_PORT'])
@@ -79,7 +87,7 @@ class ENotiPy(object):
                 if self.timeout is None:
                     self.rets = self.fcn(*args,**kwargs)
                 else:
-                    with timeout(seconds=self.timeout):
+                    with functionTimer(seconds=self.timeout):
                         self.rets = self.fcn(*args,**kwargs)
                 #Adding returns to success message
                 if isinstance(self.rets,Iterable):
@@ -98,15 +106,16 @@ class ENotiPy(object):
             if self.timeout is None:
                 self.rets = self.fcn(*args,**kwargs)
             else:
-                with timeout(seconds=self.timeout):
+                with functionTimer(seconds=self.timeout):
                     self.rets = self.fcn(*args,**kwargs)
 
     def runCommand(self,command):
         """Use this function to execute the commandline argument."""
         if self.rank == 0:
             try:
-                process = subprocess.Popen(command)
-                process.wait(timeout=self.timeout)
+                process = subprocess.run(command,timeout=self.timeout, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                if process.returncode != 0:
+                    raise Exception("Command failed with: "+str(process.stderr))
             except Exception as e:
                 self.subject = "Oops, something went wrong."
                 self.sm = "Code execution failure:\n"+str(e)
@@ -171,7 +180,6 @@ def lineRun():
         f.close()
     else:
         #Adjust timeout to seconds
-        args.timeout = args.timeout*60 if isinstance(args.timeout,type(1.0)) else None
         if args.request:
             requestEnvSetup()
         elif args.info is not None:
