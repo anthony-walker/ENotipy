@@ -11,7 +11,7 @@ setuptools.setup(
     description="Notipy is a package to wrap your code and email you upon it's completion",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/awa1k3r/Notipy",
     entry_points={
         'console_scripts': [
             'notipy=notipy.notipy:lineRun'
