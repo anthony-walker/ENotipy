@@ -8,6 +8,7 @@ setuptools.setup(
     version="0.0.1",
     author="Anthony Walker",
     author_email="dev.notipy@gmail.com",
+    license='BSD 3-clause "New" or "Revised License"',
     description="ENotipy is a package to wrap your code and email you upon it's completion",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -20,7 +21,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved ::BSD License",
+        "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
