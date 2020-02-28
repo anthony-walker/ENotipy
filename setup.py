@@ -2,7 +2,7 @@
 # @Date:   2020-02-28T08:20:49-08:00
 # @Email:  dev.sokato@gmail.com
 # @Last modified by:   walkanth
-# @Last modified time: 2020-02-28T10:36:43-08:00
+# @Last modified time: 2020-02-28T10:40:20-08:00
 
 
 
@@ -13,7 +13,7 @@ with open("README.md", encoding='utf-8') as fh:
 
 setuptools.setup(
     name="enotipy", # Replace with your own username
-    version="1.0.0",
+    version="1.0.1",
     author="Anthony Walker",
     author_email="dev.notipy@gmail.com",
     license='BSD 3-clause "New" or "Revised License"',
