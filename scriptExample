@@ -1,16 +1,24 @@
+# @Author: Anthony Walker <walkanth>
+# @Date:   2020-02-28T08:20:49-08:00
+# @Email:  dev.sokato@gmail.com
+# @Last modified by:   walkanth
+# @Last modified time: 2020-02-28T08:23:12-08:00
+
+
+
 #!/usr/bin/env bash
 
 #Brings up help menu
-#notipy -h
+#enotipy -h
 
 #Generates SAMPLE_INFO
-#notipy -g
+#enotipy -g
 
 #Execute with env setup request
-notipy "python scriptCodeExample.py" -r=True
+enotipy "python scriptCodeExample.py" -r=True
 
 #Execute with env setup info file
-#notipy "python scriptCodeExample.py" -i=SAMPLE_INFO
+#enotipy "python scriptCodeExample.py" -i=SAMPLE_INFO
 
 #Environment can be manually set as well
-#notipy "python scriptCodeExample.py" -t=60 #timeout after 60 minutes
+#enotipy "python scriptCodeExample.py" -t=60 #timeout after 60 minutes
