@@ -22,15 +22,15 @@ class functionTimer:
     def __exit__(self, type, value, traceback):
         signal.alarm(0)
 
-class NotiPy(object):
+class ENotiPy(object):
     """Use this class to execute a function and notify via email when it has completed."""
     def __init__(self,rank=0,timeout=None):
         """Initializer."""
         self.timeout = timeout
         try:
-            self.smtp =os.environ['NOTIPY_SMTP']
-            self.port = int(os.environ['NOTIPY_PORT'])
-            self.email = self.receiver = os.environ['NOTIPY_EMAIL']
+            self.smtp =os.environ['ENOTIPY_SMTP']
+            self.port = int(os.environ['ENOTIPY_PORT'])
+            self.email = self.receiver = os.environ['ENOTIPY_EMAIL']
         except Exception as e:
             print("""Error: Environment variables not properly set. Check the README for information on how to set this.""")
             sys.exit()
@@ -52,7 +52,7 @@ class NotiPy(object):
         self.server.ehlo()
         self.server.starttls()
         self.server.ehlo()
-        self.server.login(self.email, os.environ['NOTIPY_KEY'])
+        self.server.login(self.email, os.environ['ENOTIPY_KEY'])
         self.server.sendmail(self.email,self.receiver,self.success.as_string())
         self.server.quit()
 
@@ -60,14 +60,14 @@ class NotiPy(object):
         """Use this function to attempt to send the mail"""
         try:
             self.prepareMessage()
-            self.sm += "\n-NotiPy\n"
+            self.sm += "\n-ENotiPy\n"
             ts = MIMEText(self.sm)
             self.success.attach(ts)
             self.send()
         except Exception as e:
             print(e)
             print("""If you received a Username and Password error for gmail accounts,
-            login to your account and visit https://support.google.com/accounts/answer/6010255 and setup an app password for Notipy.
+            login to your account and visit https://support.google.com/accounts/answer/6010255 and setup an app password for ENotipy.
             Users of email services may have an option similar to this.""")
 
     def run(self,fcn,*args,**kwargs):
@@ -125,12 +125,12 @@ def str2bool(v):
 
 def requestEnvSetup():
     """Use this function to set env variables before execution."""
-    print("Notipy environment setup requested.\n")
+    print("ENotipy environment setup requested.\n")
     print("If you are unsure of a requested setup argument check the README.\n")
-    os.environ['NOTIPY_EMAIL'] = input("Enter email address: ")
-    os.environ['NOTIPY_KEY'] = input("Enter password: ")
-    os.environ["NOTIPY_SMTP"] = input("Enter SMTP server: ")
-    os.environ["NOTIPY_PORT"] = input("Enter SMTP port: ")
+    os.environ['ENOTIPY_EMAIL'] = input("Enter email address: ")
+    os.environ['ENOTIPY_KEY'] = input("Enter password: ")
+    os.environ["ENOTIPY_SMTP"] = input("Enter SMTP server: ")
+    os.environ["ENOTIPY_PORT"] = input("Enter SMTP port: ")
 
 def infoFileEnvSetup(infoFile):
     """Use this function to export the appropriate variables from INFO file."""
@@ -138,15 +138,15 @@ def infoFileEnvSetup(infoFile):
         lns = [line for line in f]
         lns = lns[1:5]
         lns = [line.split("\"")[1] for line in lns]
-        os.environ['NOTIPY_EMAIL'] = lns[0]
-        os.environ['NOTIPY_KEY'] = lns[1]
-        os.environ["NOTIPY_SMTP"] = lns[2]
-        os.environ["NOTIPY_PORT"] = lns[3]
+        os.environ['ENOTIPY_EMAIL'] = lns[0]
+        os.environ['ENOTIPY_KEY'] = lns[1]
+        os.environ["ENOTIPY_SMTP"] = lns[2]
+        os.environ["ENOTIPY_PORT"] = lns[3]
 
 def lineRun():
     """Use this function to run from the commandline."""
     parser = argparse.ArgumentParser(description="""This is the commandline interface for
-    Notipy. An open source notification software that wraps your code and sends an email notification
+    ENotipy. An open source notification software that wraps your code and sends an email notification
     when the code has either completed or terminated due to an error.
     """)
     parser.add_argument("command", nargs='?',default=None)
@@ -158,17 +158,16 @@ def lineRun():
     args = parser.parse_args()
     #Throw error if command isn't provided
     if args.command is None and not args.generate:
-        parser.error("a command must be specified unless using a different Notipy functionality.")
+        parser.error("a command must be specified unless using a different ENotipy functionality.")
 
-    #NotiPy
     if args.generate:
         print('Generating SAMPLE_INFO script')
         with open("SAMPLE_INFO","w") as f:
             f.write("#!/usr/bin/env bash\n")
-            f.write("export NOTIPY_EMAIL=\"dev.notipy@gmail.com\"\n")
-            f.write("export NOTIPY_KEY=\"SuperSecretPassword\"\n")
-            f.write("export NOTIPY_SMTP=\"smtp.gmail.com\"\n")
-            f.write("export NOTIPY_PORT=\"587\"")
+            f.write("export ENOTIPY_EMAIL=\"dev.notipy@gmail.com\"\n")
+            f.write("export ENOTIPY_KEY=\"SuperSecretPassword\"\n")
+            f.write("export ENOTIPY_SMTP=\"smtp.gmail.com\"\n")
+            f.write("export ENOTIPY_PORT=\"587\"")
         f.close()
     else:
         #Adjust timeout to seconds
@@ -180,5 +179,5 @@ def lineRun():
         #Splitting command for process
         splitCommand = args.command.split(" ")
         #Execute command
-        notifier = NotiPy(timeout=args.timeout)
+        notifier = ENotiPy(timeout=args.timeout)
         notifier.runCommand(splitCommand)

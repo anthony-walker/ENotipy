@@ -1,1 +1,1 @@
-from .notipy import NotiPy
+from .enotipy import ENotiPy

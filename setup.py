@@ -14,7 +14,7 @@ setuptools.setup(
     url="https://github.com/awa1k3r/Notipy",
     entry_points={
         'console_scripts': [
-            'notipy=notipy.notipy:lineRun'
+            'enotipy=enotipy.enotipy:lineRun'
         ]
     },
     packages=setuptools.find_packages(),
