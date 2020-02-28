@@ -2,3 +2,4 @@ INFO
 enotipy.egg-info
 */__pycache__
 *__pycache__
+/dist/
