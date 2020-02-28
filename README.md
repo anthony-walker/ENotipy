@@ -23,3 +23,4 @@ The final way is to request environment setup prompts. This can be done with
 `requestEnvSetup()` in a script or `-r=True` on the command line.
 
 For examples of these options, checkout `scriptExample` and `codeExample.py`
+Note that to use strictly "notipy" on the commandline that the package must be installed. Otherwise, replace "notipy" with "python /path/to/notipy.py".
