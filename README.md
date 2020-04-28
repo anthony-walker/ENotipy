@@ -1,9 +1,9 @@
-#ENotiPy
+# ENotiPy
 
-###Description
+### Description
 ENotipy is a simple script that emails the users upon code completion or failure.
 
-###Environment Setup
+### Environment Setup
 ENotipy requires 4 environment variables to be setup prior to use. These variables
 can be set 3 different ways. The first is manually. For a bash shell this would
 look something like:
@@ -27,8 +27,8 @@ For examples of these options, checkout `scriptExample` and `codeExample.py`
 **Note that to use strictly "enotipy" on the commandline that the package must be installed via pip. Otherwise, replace "enotipy" with "python /path/to/enotipy.py".**
 
 
-###Script Examples
-####commands:
+### Script Examples
+#### commands:
 To access the help menu you can invoke
 
 ```bash
@@ -59,7 +59,7 @@ The command can also be given a timeout time in minutes
 enotipy "python scriptCodeExample.py" -t=60 #timeout after 60 minutes
 ```
 
-####scriptExampleCode.py:
+#### scriptExampleCode.py:
 ```python
 def test_fcn(*args):
     x, = args;
@@ -70,7 +70,7 @@ if __name__ == "__main__":
     test_fcn(100)
 ```
 
-###Code Example
+### Code Example
 If you want to use ENotipy in a code it can be used as
 
 ```python
