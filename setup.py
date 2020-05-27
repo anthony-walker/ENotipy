@@ -13,7 +13,7 @@ with open("README.md", encoding='utf-8') as fh:
 
 setuptools.setup(
     name="enotipy", # Replace with your own username
-    version="1.0.2",
+    version="1.0.3",
     author="Anthony Walker",
     author_email="dev.notipy@gmail.com",
     license='BSD 3-clause "New" or "Revised License"',
